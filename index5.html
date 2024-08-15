@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            background-color: aliceblue;
+        }
+        nav{
+            background-color: blueviolet;
+           padding: 10px;
+           width: 100%;
+           height: 50px;
+        }
+        nav ul{
+            display: flex;
+            list-style: none;
+            position: relative;
+        }
+        nav ul  li{
+            padding: 5px;
+            height: 40px;
+            margin: 0 5px;
+          
+          
+
+        }
+        nav ul li a{
+        color: #fff;
+        text-decoration: none;
+        text-transform: capitalize;
+        font-family: sans-serif;
+        }
+        .submenu{
+            position: absolute;
+            top: 40px;
+            left: 70px;
+            display: block;
+            background: #ffffff;
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .submenu li{
+            height: inherit;
+        }
+        .submenu li a {
+            color: #000;
+
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">home</a></li>
+            <li class="about"><a href="#" >about</a>
+            <ul class="submenu">
+                <li><a href="#">one</a></li>
+                <li><a href="#">two</a></li>
+                <li><a href="#">three</a></li>
+            </ul>
+            
+            </li>
+            <li><a href="#">service</a></li>
+            <li><a href="#">contact us</a></li>
+        </ul>
+    </nav>
+
+    <script>
+        const submenu = document.querySelector(".submenu")
+        const aboutmenu = document.querySelector(".about")
+
+        aboutmenu.addEventListener("mouseenter",()=>{
+            submenu.style.display="block"
+        })
+        aboutmenu.addEventListener("mouseleave",()=>{
+            submenu.style.display="none"
+        })
+
+    </script>
+    
+</body>
+</html>

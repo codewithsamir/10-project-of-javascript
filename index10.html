@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Link Highlighter</title>
+    <style>
+a{
+    font-size: 3rem;
+    
+    margin: 5px;
+}
+h1{
+    font-size: 5rem;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <h1>Link Highlighter</h1>
+    <div class="firstpart">
+        <a href="index.html">first project</a>
+        <br>
+        <a href="index10.html">this project</a>
+        <br>
+        <a href="index2.html">second project</a>
+        <br>
+    </div>
+    <div class="firstpart">
+        <a href="index3.html">third project</a>
+        <br>
+        <a href="index4.html">fourth project</a>
+        <br>
+        <a href="index5.html">fifth project</a>
+        <br>
+    </div>
+</body>
+<script>
+    const links = document.querySelectorAll("a")
+    links.forEach((link)=>{
+        link.addEventListener("mousemove",()=>{
+            link.style.color = "green"
+        })
+        link.addEventListener("mouseout",()=>{
+            link.style.color = "green"
+        })
+    })
+    
+</script>
+</html>

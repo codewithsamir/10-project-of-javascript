@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <style>
+     body{
+    background: #6f93f4;
+    
+   }
+   .value{
+    font-size: 3rem;
+   }
+  </style>
+</head>
+<body>
+   <div class="value">0</div>
+   <button class="incbtn">increase</button>
+   <button class="devbtn">decrease</button>
+   <script>
+    const value = document.querySelector(".value")
+    const incbtn = document.querySelector(".incbtn")
+    const decbtn = document.querySelector(".devbtn")
+    let count = 0;
+
+    incbtn.addEventListener("click",()=>{
+        count++;
+value.innerText = count;
+    })
+    decbtn.addEventListener("click",()=>{
+        count--;
+if(count < 0){
+    value.innerText = 0;
+}else{
+    value.innerText = count;
+}
+    })
+
+   </script>
+</body>
+</html>

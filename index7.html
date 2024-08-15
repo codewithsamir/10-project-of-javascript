@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggle switch</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 100vh;
+            background-color: rgb(90, 170, 240);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+         
+        }
+        button{
+            padding: 10px 30px;
+            font-size: 1rem;
+
+        }
+        h1{
+            text-align: center;
+            color: #fff;
+            font-size: 6rem;
+            font-family: sans-serif;
+            
+        }
+        .toggle-switch
+        {
+            width: 80px;
+            margin-bottom: 20px;
+            height: 30px;
+            background-color: purple;
+            position: relative;
+        }
+        .slide
+        {
+            
+            position: absolute;
+            left: 0;
+            top: 3px;
+            width: 20px;
+            height: 80%;
+            background-color: #fff;
+            transition: all .5s linear;
+        }
+    </style>
+</head>
+<body>
+    <div class="toggle-switch">
+        <div class="slide"></div>
+    </div>
+    <div class="container">
+       
+        <button id="btn">Toggle switch</button>
+        <h1 class="state">ON</h1>
+    </div>
+</body>
+<script>
+    let togglestate = true
+    const togglebtn = document.querySelector("#btn")
+    const state = document.querySelector(".state")
+    const slide = document.querySelector(".slide")
+    
+    slide.addEventListener("click",()=>{
+       
+        togglestate= !togglestate
+
+            slide.style.transform = togglestate ? "translateX(60px)" : "translateX(0px)" 
+        
+    })
+
+
+
+
+    togglebtn.addEventListener("click",()=>{
+    togglestate =  !togglestate
+// state.style.color= "red"
+state.innerText = togglestate ? "ON" : "OFF"
+    })
+</script>
+</html>

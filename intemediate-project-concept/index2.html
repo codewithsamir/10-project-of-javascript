@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: navy;
+        }
+        .box{
+            width: 400px;
+            height: 500px;
+            border: 2px solid white;
+            /* background-color: red; */
+            margin: 0 auto;
+        }
+        h1{
+            font-size: 2rem;
+            text-align: center;
+            text-transform: capitalize;
+            color: white;
+        }
+        h2{
+            color: wheat;
+        }
+    </style>
+</head>
+<body>
+    <h1>mousedown and mosueup event</h1>
+    <div class="box">
+        <h2 id="clientX">0</h2>
+        <h2 id="clientY">0</h2>
+        <h2 id="offsetX">0</h2>
+        <h2 id="offsetY">0</h2>
+        <h2 id="offsetpositonx">0</h2>
+        <h2 id="offsetpositiony">0</h2>
+        <h2 id="offsetright">0</h2>
+        <h2 id="offsetbottom">0</h2>
+        <h2 id="offsetwidth">0</h2>
+        <h2 id="offsetheight">0</h2>
+    </div>
+</body>
+<script>
+    const box = document.querySelector(".box")
+    // const value  = document.querySelector("h2")
+    const clientX = document.getElementById("clientX")
+    const clientY = document.getElementById("clientY")
+    const offsetX= document.getElementById("offsetX")
+    const offsetY = document.getElementById("offsetY")
+    const offsetpositionx = document.getElementById("offsetpositonx")
+    const offsetpositiony = document.getElementById("offsetpositiony")
+    const offsetwidth = document.getElementById("offsetwidth")
+    const offsetheight = document.getElementById("offsetheight")
+    const offsetright  = document.getElementById("offsetright")
+    const offsetbottom  = document.getElementById("offsetbottom")
+    // box.addEventListener("mousedown",()=>{
+    //     box.style.backgroundColor = "red"
+    //     value.innerText = "i am in"
+
+    // })
+    // box.addEventListener("mouseup",()=>{
+    //     box.style.backgroundColor = "transparent"
+    //     value.innerText = "i am out"
+    // })
+    // box.addEventListener("contextmenu",(e)=>{
+    //     e.preventDefault()
+    //     // alert('you are left click')
+    //     value.innerText = "you are on left click "
+    // })
+    let isThere = true
+//     box.addEventListener("dblclick",()=>{
+//         if(isThere){
+//             value.innerText = "you double click here"
+// isThere = false
+//         }
+//         else{
+//             value.innerText = ""
+// isThere = true
+//         }
+//     })
+box.addEventListener("mousemove",(e)=>{
+    console.log(e)
+    let cx = e.clientX
+    let cy = e.clientY
+    let ofx = e.offsetX
+    let ofy = e.offsetY
+    let parent = box.offsetParent
+    
+    clientX.innerText = `clentx ${cx}`
+    clientY.innerText = `clenty ${cy}`
+    offsetX.innerText = `offsetx ${ofx}`
+    offsetY.innerText = `offsety ${ofy}`
+    offsetpositionx.innerText = `boxpositonleft ${box.offsetLeft}`
+    offsetpositiony.innerText = `boxpositontop ${box.offsetTop}`
+    offsetwidth.innerText = `boxwidth ${box.offsetWidth}`
+    offsetheight.innerText = `boxheight ${box.offsetHeight}`
+    offsetright.innerText = `boxrightpositon ${parent.offsetWidth}`
+    offsetbottom.innerText = `boxrightpositon ${parent.screenheight}`
+
+
+})
+</script>
+</html>

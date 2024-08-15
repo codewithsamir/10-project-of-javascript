@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            background: #000;
+        }
+      .tooltip-box {
+        width: 100%;
+        height: 500px;
+        background: #0478f4;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .tooltip{
+          mix-blend-mode: difference;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #fff;
+        display: none;
+        position: absolute;
+        pointer-events: none;
+        transition: all .1s ;
+      }
+      h1{
+        font-size: 4rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tooltip-box">
+        <h1>welcome to our youtube channel</h1>
+
+      <div class="tooltip"></div>
+    </div>
+    <script>
+        const tooltipbox= document.querySelector(".tooltip-box")
+        const tooltip = document.querySelector(".tooltip")
+ 
+tooltipbox.addEventListener("mousemove",(e)=>{
+    tooltip.style.display="block"
+    console.log(e)
+    tooltip.style.left=`${e.clientX}px`
+    tooltip.style.top=`${e.clientY}px`
+
+})
+tooltipbox.addEventListener("mouseout",(e)=>{
+    tooltip.style.display="none"
+})
+
+    </script>
+  </body>
+</html>

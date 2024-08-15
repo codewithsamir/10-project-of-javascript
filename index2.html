@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-2</title>
+    <style>
+       
+         body{
+            background: rgb(18, 120, 254);
+            text-align: center;
+            font-family: sans-serif;
+       
+           
+        }
+        h1{
+            font-size: 4rem;
+                text-transform: capitalize;
+        }
+        .image-container{
+            width: 600px;
+            height: 600px;
+        }
+        img{
+            width: 350px;
+            height: 400px;
+            object-fit: cover;
+            object-position: center;
+            transition: all .5s;
+        }
+        .imgs{
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>mouse event basic projects</h1>
+   <div class="imgs">
+    <div class="image-container">
+        <img src="1.png" alt="">
+    </div>
+    <div class="image-container">
+        <img src="2.png" alt="">
+    </div>
+   </div>
+
+<script>
+    const imgs = document.querySelectorAll("img")
+    console.log(imgs)
+ 
+
+ imgs.forEach(img=>{
+    img.addEventListener("mousemove",()=>{
+// img.style.transform = "scale(1.5)"
+img.style.width = "100%"
+img.style.height = "100%"
+    })
+    img.addEventListener("mouseleave",()=>{
+// img.style.transform = "scale(1)"
+img.style.width = ""
+img.style.height = ""
+    })
+ })
+</script>
+
+
+</body>
+</html>

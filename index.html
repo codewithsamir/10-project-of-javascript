@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project-1</title>
+    <style>
+        body{
+            background: rgb(18, 120, 254);
+            text-align: center;
+            font-family: sans-serif;
+        }
+        h1{
+            font-size: 4rem;
+                text-transform: capitalize;
+        }
+        button{
+            font-size: 2rem;
+            padding: 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>mouse event basic projects</h1>
+    <button>if you like this video </button>
+    <button>then</button>
+    <button>subscribe our channel</button>
+<script>
+    const buttons = document.querySelectorAll("button")
+    console.log(buttons);
+buttons.forEach((btn,index)=>{
+  btn.addEventListener("mouseenter",()=>{
+      document.body.style.background="red"
+btn.style.background= "red"
+btn.style.color= "#fff"
+if(index === 1){
+    btn.style.background= "blue"  
+    document.body.style.background="blue"
+}
+if(index === 2){
+    btn.style.background= "purple" 
+    document.body.style.background="purple" 
+}
+  })
+  btn.addEventListener("mouseleave",()=>{
+    btn.style.background= ""
+    btn.style.color= ""
+    document.body.style.background="rgb(18, 120, 254)"
+  })
+})
+
+
+
+
+
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>project 8 of javascript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        height: 100vh;
+        background-color: rgb(57, 57, 191);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .container {
+        width: 600px;
+        height: 500px;
+        /* overflow: hidden; */
+        /* border: 2px solid red; */
+        /* margin:  0 auto; */
+      }
+      .image-carousel {
+        height: 400px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      
+      }
+   
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all .5s linear;
+        object-position:center ;
+        position: absolute;
+      }
+      .navigate-image-butttons {
+        width: 100%;
+        background-color: rgb(76, 76, 246);
+        padding: 20px;
+      }
+      button {
+        padding: 8px 20px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 20px;
+        width: 200px;
+        margin: 5px 10px;
+        transition: all 0.2s linear;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: rgb(84, 121, 242);
+        border: 2px solid white;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image-carousel">
+        <img
+          src=""
+          alt=""
+          id="image-home"
+        />
+      </div>
+      <div class="navigate-image-butttons">
+        <button id="prev">Prev</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+  </body>
+  <script>
+    const imagesarray = [
+      "https://images.unsplash.com/photo-1536063211352-0b94219f6212?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YmVhdXRpZnVsJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1699372281371-72909c172533?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0fHx8ZW58MHx8fHx8",
+      "https://images.unsplash.com/photo-1682686581580-d99b0230064e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHw2fHx8ZW58MHx8fHx8",
+      "https://plus.unsplash.com/premium_photo-1665657351427-efdfbf01fb81?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHx8",
+      "https://images.unsplash.com/photo-1695653422536-d1e9d449ce7b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxMXx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1665657351435-96c58da04fd1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxMnx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1682101517859-7162f8372365?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxM3x8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1666788167942-87117f53df6f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1666788167959-740b0b11e00b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwxOXx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/flagged/photo-1571837360114-edf5dba7b1dd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmVhdXRpZnVsJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1561742139-77a5a42cc97b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YmVhdXRpZnVsJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1542027959157-98e6745f4ba7?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYXV0aWZ1bCUyMGdpcmx8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1519282407670-6e0ace7ffc96?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YmVhdXRpZnVsJTIwZ2lybHxlbnwwfHwwfHx8MA%3D%3D",
+      "https://images.unsplash.com/photo-1635656731280-293c96c2ebb8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bHxlbnwwfHwwfHx8MA%3D%3D",
+    ];
+
+    let countimages = 0;
+
+    const nextbtn = document.querySelector("#next")
+    const prevbtn = document.querySelector("#prev")
+    const imagehome = document.querySelector("#image-home")
+    imagehome.src = imagesarray[countimages]
+    function nextimagebtn(){
+ 
+
+        countimages = (countimages + 1) % imagesarray.length;
+        imagehome.src = imagesarray[countimages];
+     
+    
+    prevbtn.style.opacity = "1";
+}
+    function previmagebtn(){
+        if(countimages === 0){
+            countimages = 0
+            prevbtn.style.opacity = ".2"
+        }
+        else{
+            countimages = (countimages - 1) % imagesarray.length
+        imagehome.src = imagesarray[countimages]
+      
+        }
+    }
+nextbtn.addEventListener("click",nextimagebtn)
+prevbtn.addEventListener("click",previmagebtn)
+    // nextimagebtn()
+  </script>
+</html>

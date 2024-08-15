@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop Puzzle</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body{
+      background-color: blueviolet;
+
+    }
+    .box{
+      width: 200px;
+      height: 200px;
+      background-color: rgb(234, 234, 234);
+      position: fixed;
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+</body>
+<script>
+  const box = document.querySelector(".box")
+  let mousepositonleft,mousepositontop,boxleft,boxtop;
+  let isdragable = false;
+
+  box.addEventListener("mousedown",(e)=>{
+    isdragable = true
+    mousepositonleft = e.clientX;
+    mousepositontop = e.clientY;
+    boxleft = box.offsetLeft;
+    boxtop = box.offsetTop;
+    console.log(mousepositonleft,mousepositontop,boxleft,boxtop)
+    
+  })
+  document.addEventListener("mousemove",(e)=>{
+   if(isdragable){
+    let newmousepositonx = e.clientX - mousepositonleft + boxleft
+    let newmousepositiony = e.clientY - mousepositontop + boxtop
+    box.style.left = `${newmousepositonx}px`
+    box.style.top = `${newmousepositiony}px`
+   }
+  })
+  box.addEventListener("mouseup",()=>{
+isdragable = false;
+  })
+
+</script>
+</html>

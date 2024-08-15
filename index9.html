@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin:0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .page{
+      height: 100vh;
+      background-color: rgb(130, 130, 241);
+    }
+    .page2{
+      height: 100vh;
+      background-color: rgb(82, 120, 217);
+    }
+    h1{
+      text-align: center;
+      text-transform: capitalize;
+      font-size: 4rem;
+      color: white;
+      text-shadow: 5px 5px 10px gray;
+      user-select: none;
+    }
+    button{
+      padding: 10px 30px;
+      font-size: 1.3rem;
+      margin: 5px;
+      color: aliceblue;
+      text-transform: capitalize;
+      border: none;
+      cursor: pointer;
+      border-radius: 30px;
+      text-shadow: 1px 1px 20px rgba(34, 0, 255, 0.8);
+      
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="page">
+    <h1>firts page</h1>
+  </div>
+  <div class="page2" id="page2">
+    <h1>second page</h1>
+  </div>
+</body>
+<script>
+  const firstpage = document.getElementById("page")
+  const secondpage = document.getElementById("page2")
+
+  const colorArray = [
+    "red","orange","brown","pink","yellow","green","purple","maroon","turquoise","cyan","navy","darkblue","gold","tomato","salmon","Blue","black",
+  ]
+  let colorcount = 0;
+
+  function backgroundColorChanger(){
+    firstpage.style.background = colorArray[colorcount]
+    colorcount = (colorcount + 1) % colorArray.length
+
+  }
+
+function createButton(){
+colorArray.forEach((btnvalue)=>{
+  const button = document.createElement("button")
+  button.innerText = btnvalue
+  button.style.backgroundColor = btnvalue
+
+  secondpage.appendChild(button)
+  button.addEventListener("click",()=>{
+    secondpage.style.backgroundColor= button.innerText
+  })
+})
+
+}
+createButton()
+
+
+  firstpage.addEventListener("click",backgroundColorChanger)
+
+</script>
+</html>
